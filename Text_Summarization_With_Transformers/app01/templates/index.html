@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap-3.4.1/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/9ad01b38f0def9a4.css' %}">
+    <link rel="stylesheet" href="{% static 'css/e479aa64d42f0b18.css' %}">
+    <script src="{% static 'js/jquery-3.7.0.min.js' %}"></script>
+    <script src="{% static 'plugins/bootstrap-3.4.1/js/bootstrap.js' %}"></script>
+
+    <style>
+        .wrapper {
+            margin: auto;
+            max-width: 100rem;
+        }
+
+        h1, h2 {
+            font-size: 2rem;
+            font-weight: 550;
+        }
+
+        #h2_head {
+            position: relative;
+            width: 100%;
+            text-align: center;
+            font-size: 2.5em;
+            font-weight: 600;
+            color: rgba(11, 166, 208, 0.95);
+            margin-top: 30px;
+        }
+
+        .h-12 {
+            height: 5rem;
+        }
+
+        .text-xs {
+            font-size: 1.4rem;
+        }
+
+        .RewriteFields_part__Gz7e2 {
+            font-size: 17px;
+        }
+
+        .button {
+            font-size: 1.5rem;
+            padding: 0.8rem 1.2rem;
+        }
+
+        #btn {
+            visibility: hidden;
+            min-height: 50px;
+        }
+    </style>
+</head>
+<body>
+
+<!--文本区-->
+<div id="__next">
+    <div class="px-4 lg:px-0">
+        <div>
+            <div class="py-2" data-country="cn" style="height: 80px;text-align: center;">
+                <h2 id="h2_head">英文文档摘要系统</h2>
+            </div>
+            <div class="h-12 wrapper flex items-center justify-between">
+                <div class="flex justify-center items-center"><h2 class="mr-3">总结文本</h2><span
+                        class="glyphicon glyphicon-edit" aria-hidden="true"></span></div>
+            </div>
+            <div class="wrapper RewriteFields_partsWrap__ueR7v RewriteFields_box_shadow___S0wZ">
+                <!--输入框-->
+                <div class="RewriteFields_part__Gz7e2">
+                    <form novalidate id="form1">
+                        <textarea id="text" autofocus=""
+                                  oninput="toggleButton(); countCharacters()"
+                                  class="font-ys resize-none outline-0 w-full h-full"
+                                  placeholder="原始文本"
+                                  style="height: 200px !important;"></textarea>
+                    </form>
+                    <div class="font-ys absolute right-3 bottom-3 text-xs text-gray-600   w-full pl-8">
+                        <div class="w-full flex flex-row-reverse  relative">
+                            <div id="word_count" class="font-medium"></div>
+                        </div>
+                    </div>
+                </div>
+                <!--输出框-->
+                <div class="RewriteFields_part__Gz7e2 RewriteFields_right_bg__kwAIz">
+                    <span class="text-gray-600 font-ys" id="SummarizeText">摘要总结</span>
+                </div>
+            </div>
+            <div class="my-6 text-center" id="btn">
+                <div class="font-medium button group buttonBackground border-solid shadow-md  " id="StartSummarize">
+                    <div style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;z-index:-1;visibility:hidden;pointer-events:none">
+                        <div style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;z-index:-1;visibility:hidden;pointer-events:none">
+                            <div style="position:absolute;left:0;top:0;transition:0s;width:100000px;height:100000px"></div>
+                        </div>
+                        <div style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;z-index:-1;visibility:hidden;pointer-events:none">
+                            <div style="position:absolute;left:0;top:0;transition:0s;width:200%;height:200%"></div>
+                        </div>
+                    </div>
+                    <span class="mr-2 ">现在总结</span><img alt="icon" loading="lazy" width="20" height="20"
+                                                            decoding="async" data-nimg="1" style="color:transparent"
+                                                            src="{% static 'img/summarize_gray.svg' %}">
+                    <div style="width:0"
+                         class="transition-all activeColor h-full absolute left-0 right-0 top-0 bottom-0"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--说明版块-->
+    <div class="bg-white py-2 pb-4" style="position: relative;bottom: 0">
+        <div class="wrapper relative">
+            <div class="px-4 lg:px-0">
+                <h2 class="py-2" style="padding-bottom: 1rem;">系统是用来做什么的</h2>
+                <div style="line-height:21px;font-size: 15px;">
+                    <p>
+                        本系统主要功能是将摘要形式的文章或文本总结为可作为标题的一句话。
+                    </p>
+                    <p>
+                        摘要是对一篇长文的简要概述。其主要目的，是让读者在不阅读原文的情况下了解原文，提供文本或文章的主要观点，即以简短的形式复述文章中最重要的意义。
+                        而标题则是文章内容的提炼、概括和浓缩，是文章结果的精华。
+                    </p>
+                </div>
+            </div>
+            <table class="my-3 mx-4 lg:mx-0">
+                <tbody>
+                <tr>
+                    <td>⭐ 注册:</td>
+                    <td>不需要</td>
+                </tr>
+                <tr>
+                    <td>✨ 价格:</td>
+                    <td>完全免费</td>
+                </tr>
+                <tr>
+                    <td>💡 语言模型：</td>
+                    <td>Transformer</td>
+                </tr>
+                <tr>
+                    <td>⚡ 语言</td>
+                    <td>英文</td>
+                </tr>
+                <tr>
+                    <td>⚡ 字数限制：</td>
+                    <td>最多 5,000！</td>
+                </tr>
+                <tr>
+                    <td>🙉 创作者：</td>
+                    <td>万咏逸 、周佳伟 、储子杰</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <div style="position:fixed;z-index:9999;top:16px;left:16px;right:16px;bottom:16px;pointer-events:none"></div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        bindBtnStartSummarize();
+    })
+
+    var charCount2
+
+    function bindBtnStartSummarize() {
+        $("#StartSummarize").click(function () {
+            if (charCount2 > 5100) {
+                alert("字符数过多！")
+            } else {
+                var text = $("#text").val()
+                $.ajax({
+                    url: '/index/',
+                    type: "post",
+                    data: {"text": text},
+                    dataType: "JSON",
+                    success: function (res) {
+                        if (res.status) {
+                            $("#SummarizeText").text(res.summarize)
+                        } else {
+                            alert("错误！")
+                        }
+                    }
+                })
+            }
+        })
+    }
+
+    function toggleButton() {
+        var inputText = document.getElementById('text').value;
+        var startSummarizeDiv = document.getElementById('btn');
+        if (inputText.trim() !== '') {
+            startSummarizeDiv.style.visibility = 'visible';
+        } else {
+            startSummarizeDiv.style.visibility = 'hidden';
+        }
+    }
+
+    function countCharacters() {
+        var textareaValue = document.getElementById('text').value;
+        var charCount1 = textareaValue.length;
+        charCount2 = charCount1
+        // var wordCount = Math.floor(charCount / 10000);  // 计算字符数除以10000的值
+        document.getElementById('word_count').innerText = charCount1 + "/5000";  // 将计算结果显示在div中
+    }
+</script>
+
+<script type="text/javascript">
+
+</script>
+
+</body>
+</html>
